@@ -70,3 +70,11 @@ configure :build do
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
 end
+
+set :haml, { attr_wrapper: '"' }
+
+activate :react
+
+after_configuration do
+  sprockets.append_path File.dirname(::React::Source.bundled_path_for('react.js'))
+end

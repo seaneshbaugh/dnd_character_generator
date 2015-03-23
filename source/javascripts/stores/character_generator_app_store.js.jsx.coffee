@@ -1,7 +1,11 @@
 _generator = undefined;
 
 selectGenerator = (version) ->
-  _generator = version
+  switch version
+    when "3.5" then _generator = `<GeneratorThreeFive />`
+    when "4" then _generator = `<GeneratorFour />`
+    when "Next" then _generator = `<GeneratorNext />`
+    else throw new Error "Character Generator version must be 3, 4.5, or Next."
 
   return
 
@@ -21,7 +25,6 @@ CharacterGeneratorAppStore = assign {}, EventEmitter.prototype,
     @removeListener "selectGenerator", callback
 
     return
-
 
 CharacterGeneratorAppDispatcher.register (action) ->
   switch action.actionType

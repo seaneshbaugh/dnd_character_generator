@@ -5,7 +5,7 @@ selectGenerator = (version) ->
     when "3.5" then _generator = `<GeneratorThreeFive />`
     when "4" then _generator = `<GeneratorFour />`
     when "Next" then _generator = `<GeneratorNext />`
-    else throw new Error "Character Generator version must be 3, 4.5, or Next."
+    else throw new Error "Character Generator version must be 3.5, 4, or Next."
 
   return
 

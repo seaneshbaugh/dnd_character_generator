@@ -1,5 +1,5 @@
-GeneratorNext = React.createClass
+CharacterGeneratorNext = React.createClass
   render: ->
     `<div>Next</div>`
 
-window.GeneratorNext = GeneratorNext
+window.CharacterGeneratorNext = CharacterGeneratorNext

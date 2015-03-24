@@ -1,5 +1,5 @@
-GeneratorFour = React.createClass
+CharacterGeneratorFour = React.createClass
   render: ->
     `<div>4</div>`
 
-window.GeneratorFour = GeneratorFour
+window.CharacterGeneratorFour = CharacterGeneratorFour

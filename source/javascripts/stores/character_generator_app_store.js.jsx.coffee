@@ -2,9 +2,9 @@ _generator = undefined;
 
 selectGenerator = (version) ->
   switch version
-    when "3.5" then _generator = `<GeneratorThreeFive />`
-    when "4" then _generator = `<GeneratorFour />`
-    when "Next" then _generator = `<GeneratorNext />`
+    when "3.5" then _generator = `<CharacterGeneratorThreeFive />`
+    when "4" then _generator = `<CharacterGeneratorFour />`
+    when "Next" then _generator = `<CharacterGeneratorFour />`
     else throw new Error "Character Generator version must be 3.5, 4, or Next."
 
   return

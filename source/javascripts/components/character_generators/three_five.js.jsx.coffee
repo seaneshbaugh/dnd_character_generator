@@ -14,12 +14,7 @@ CharacterGeneratorThreeFive = React.createClass
   render: ->
     `<div>
       <h2>3.5</h2>
-      <div>Strength: {this.state.character.strength}</div>
-      <div>Dexterity: {this.state.character.dexterity}</div>
-      <div>Constitution: {this.state.character.consitution}</div>
-      <div>Intelligence: {this.state.character.intelligence}</div>
-      <div>Wisdom: {this.state.character.wisdom}</div>
-      <div>Charisma: {this.state.character.charisma}</div>
+      <CharacterGeneratorThreeFiveCharacterStats character={this.state.character} />
       <button className="btn btn-default" type="button" onClick={this._onRollStatDice}>Roll Stat Dice</button>
     </div>`
 

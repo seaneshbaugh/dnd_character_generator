@@ -4,6 +4,7 @@
 #= require assign
 #= require invariant
 #= require EventEmitter.min
+#= require_tree ./helpers
 #= require_tree ./dispatchers
 #= require_tree ./stores
 #= require_tree ./actions

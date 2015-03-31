@@ -1,4 +1,12 @@
 CharacterGeneratorThreeFiveActions =
+  setStat: (statName, statValue) ->
+    CharacterGeneratorAppDispatcher.dispatch
+      actionType: "UPDATE_STAT"
+      statName: statName
+      statValue: statValue
+
+    return
+
   rollStatDice: ->
     stats =
       strength: Helpers.Dice.roll("4d6k3")

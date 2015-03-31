@@ -9,3 +9,15 @@
 body {
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.form-inline {
+  .form-group, .checkbox, .radio {
+    margin-right: 4px;
+  }
+}
+
+.form-inline {
+  .form-group:last-child, .checkbox:last-child, .radio:last-child {
+    margin-right: 0;
+  }
+}

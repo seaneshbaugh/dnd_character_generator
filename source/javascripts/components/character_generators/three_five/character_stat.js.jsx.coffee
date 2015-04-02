@@ -2,13 +2,18 @@ CharacterGeneratorThreeFiveCharacterStat = React.createClass
   propTypes:
     statIndex: React.PropTypes.string.isRequired
     statName: React.PropTypes.string.isRequired
-    statValue: React.PropTypes.number.isRequired
+    # statValue: React.PropTypes.number.isRequired
 
   render: ->
+    if !@props.allowManualEntry or (@props.statValue and @props.statValue >=3 and @props.statValue <= 18)
+      formGroupClass = "form-group"
+    else
+      formGroupClass ="form-group has-error"
+
     `<div className="form-inline">
-      <div className="form-group">
+      <div className={formGroupClass}>
         <label className="sr-only" htmlFor={this.props.statName + "_value"}>{this.props.statName}</label>
-        <input type="text" className="form-control" id={this.props.statName + "_value"} value={this.props.statValue} onChange={this._onChangeStatValue}/>
+        <input className="form-control" disabled={!this.props.allowManualEntry} id={this.props.statName + "_value"} type="text" value={this.props.statValue} onChange={this._onChangeStatValue}/>
       </div>
       <div className="radio">
         <label>

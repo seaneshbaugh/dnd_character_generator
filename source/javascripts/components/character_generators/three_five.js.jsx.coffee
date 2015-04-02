@@ -18,30 +18,26 @@ CharacterGeneratorThreeFive = React.createClass
         <CharacterGeneratorThreeFiveCharacterStats character={this.state.character} />
         <div className="col-xs-12 col-sm-3">
           <div>
-            <strong>Strength:</strong> {this.state.character.strength}
+            <strong>Strength:</strong> {this.state.character.strength || 0}
           </div>
           <div>
-            <strong>Dexterity:</strong> {this.state.character.dexterity}
+            <strong>Dexterity:</strong> {this.state.character.dexterity || 0}
           </div>
           <div>
-            <strong>Constitution:</strong> {this.state.character.constitution}
+            <strong>Constitution:</strong> {this.state.character.constitution || 0}
           </div>
           <div>
-            <strong>Intelligence:</strong> {this.state.character.intelligence}
+            <strong>Intelligence:</strong> {this.state.character.intelligence || 0}
           </div>
           <div>
-            <strong>Wisdom:</strong> {this.state.character.wisdom}
+            <strong>Wisdom:</strong> {this.state.character.wisdom || 0}
           </div>
           <div>
-            <strong>Charisma:</strong> {this.state.character.charisma}
+            <strong>Charisma:</strong> {this.state.character.charisma || 0}
           </div>
         </div>
       </div>
-      <button className="btn btn-default" type="button" onClick={this._onRollStatDice}>Roll Stat Dice</button>
     </div>`
-
-  _onRollStatDice: ->
-    CharacterGeneratorThreeFiveActions.rollStatDice()
 
   _onCharacterUpdated: ->
     @setState getCharacterGeneratorState()

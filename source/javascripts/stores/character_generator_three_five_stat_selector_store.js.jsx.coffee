@@ -1,3 +1,5 @@
+_allowManualEntry = false
+
 _statSelectors =
   "0": "strength",
   "1": "dexterity",
@@ -5,6 +7,16 @@ _statSelectors =
   "3": "intelligence",
   "4": "wisdom",
   "5": "charisma"
+
+_diceMode = "standard"
+
+setDiceMode = (mode) ->
+  _diceMode = mode
+
+  if _diceMode == "point-buy" || _diceMode == "simple-entry"
+    _allowManualEntry = true
+  else
+    _allowManualEntry = false
 
 setStatSelectors = (statIndex, statName) ->
   oldStatName = null
@@ -24,8 +36,17 @@ setStatSelectors = (statIndex, statName) ->
   _statSelectors[oldStatIndex] = oldStatName
 
 CharacterGeneratorThreeFiveStatsSelectorStore = assign {}, EventEmitter.prototype,
+  getAllowManualEntry: =>
+    _allowManualEntry
+
+  getDiceMode: =>
+    _diceMode
+
   getStatSelectors: =>
     _statSelectors
+
+  emitDiceModeChanged: ->
+    @emit "diceModeChanged"
 
   emitStatSelectorChanged: ->
     @emit "statSelectorChanged"
@@ -40,8 +61,22 @@ CharacterGeneratorThreeFiveStatsSelectorStore = assign {}, EventEmitter.prototyp
 
     return
 
+  addDiceModeChangedListener: (callback) ->
+    @addListener "diceModeChanged", callback
+
+    return
+
+  removeDiceModeChangedListener: (callback) ->
+    @removeListener "diceModeChanged", callback
+
+    return
+
 CharacterGeneratorAppDispatcher.register (action) ->
   switch action.actionType
+    when "SET_DICE_MODE"
+      setDiceMode action.mode
+
+      CharacterGeneratorThreeFiveStatsSelectorStore.emitDiceModeChanged()
     when "STAT_SELECTOR_CHANGED"
       setStatSelectors action.statIndex, action.statName
 

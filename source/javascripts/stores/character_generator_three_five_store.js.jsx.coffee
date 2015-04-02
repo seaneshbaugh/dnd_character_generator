@@ -7,7 +7,10 @@ _character =
   charisma: 0
 
 setStat = (statName, statValue) ->
-  _character[statName] = parseInt(statValue) || _character[statName]
+  if /^([0-9]+)$/.test(statValue)
+    _character[statName] = Number(statValue)
+  else if statValue == ""
+    _character[statName] = ""
 
 setStats = (stats) ->
   _character.strength = stats.strength

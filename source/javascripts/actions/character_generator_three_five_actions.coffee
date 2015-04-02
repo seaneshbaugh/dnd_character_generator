@@ -8,13 +8,15 @@ CharacterGeneratorThreeFiveActions =
     return
 
   rollStatDice: ->
+    rolls = Helpers.StatGenerator.roll(CharacterGeneratorThreeFiveStatsSelectorStore.getDiceMode())
+
     stats =
-      strength: Helpers.Dice.roll("4d6k3")
-      dexterity: Helpers.Dice.roll("4d6k3")
-      constitution: Helpers.Dice.roll("4d6k3")
-      intelligence: Helpers.Dice.roll("4d6k3")
-      wisdom: Helpers.Dice.roll("4d6k3")
-      charisma: Helpers.Dice.roll("4d6k3")
+      strength: rolls[0]
+      dexterity: rolls[1]
+      constitution: rolls[2]
+      intelligence: rolls[3]
+      wisdom: rolls[4]
+      charisma: rolls[5]
 
     CharacterGeneratorAppDispatcher.dispatch
       actionType: "UPDATE_STATS"

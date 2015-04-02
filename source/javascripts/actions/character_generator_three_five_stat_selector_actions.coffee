@@ -1,4 +1,11 @@
 CharacterGeneratorThreeFiveStatSelectorActions =
+  setDiceMode: (mode) ->
+    CharacterGeneratorAppDispatcher.dispatch
+      actionType: "SET_DICE_MODE"
+      mode: mode
+
+    return
+
   setStatSelectors: (statIndex, statName) ->
     statSelectors = CharacterGeneratorThreeFiveStatsSelectorStore.getStatSelectors()
 

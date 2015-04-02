@@ -1,4 +1,4 @@
-_generator = undefined;
+_generator = undefined
 
 selectGenerator = (version) ->
   switch version

@@ -113,10 +113,13 @@ window.Helpers.Validator =
 
     @errors
 
-  isValid: ->
+  isValid: (property) ->
     @validate()
 
-    @errors.length == 0
+    if property != undefined and @hasOwnProperty(property)
+      @errors.filter((error) -> error.property == property).length == 0
+    else
+      @errors.length == 0
 
   fullErrorMessages: ->
     @validate()

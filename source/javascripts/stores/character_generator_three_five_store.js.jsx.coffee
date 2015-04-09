@@ -1,10 +1,20 @@
-_character =
+_character = assign {}, window.Helpers.Validator,
   strength: 0
   dexterity: 0
   constitution: 0
   intelligence: 0
   wisdom: 0
   charisma: 0
+  name: ""
+
+_character.validateNumericalityOf("strength", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
+_character.validateNumericalityOf("dexterity", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
+_character.validateNumericalityOf("constitution", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
+_character.validateNumericalityOf("intelligence", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
+_character.validateNumericalityOf("wisdom", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
+_character.validateNumericalityOf("charisma", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
+
+window.char = _character
 
 setStat = (statName, statValue) ->
   if /^([0-9]+)$/.test(statValue)
@@ -32,6 +42,8 @@ CharacterGeneratorThreeFiveStore = assign {}, EventEmitter.prototype,
     _character
 
   emitCharacterUpdated: ->
+    _character.validate()
+
     @emit "characterUpdated"
 
   addCharacterUpdatedListener: (callback) ->

@@ -12,6 +12,14 @@ CharacterGeneratorThreeFive = React.createClass
     CharacterGeneratorThreeFiveStore.removeCharacterUpdatedListener @_onCharacterUpdated
 
   render: ->
+    errorMessages = @state.character.fullErrorMessages().map (error, index) ->
+      `<li key={index}>{error}</li>`
+
+    if errorMessages.length
+      errorReport = `<ul>
+        {errorMessages}
+      </ul>`
+
     `<div>
       <h2>3.5</h2>
       <div className="row">
@@ -37,6 +45,7 @@ CharacterGeneratorThreeFive = React.createClass
           </div>
         </div>
       </div>
+      {errorReport}
     </div>`
 
   _onCharacterUpdated: ->

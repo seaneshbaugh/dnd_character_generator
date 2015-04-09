@@ -13,7 +13,7 @@ _diceMode = "standard"
 setDiceMode = (mode) ->
   _diceMode = mode
 
-  if _diceMode == "point-buy" || _diceMode == "simple-entry"
+  if _diceMode == "point-buy" or _diceMode == "simple-entry"
     _allowManualEntry = true
   else
     _allowManualEntry = false

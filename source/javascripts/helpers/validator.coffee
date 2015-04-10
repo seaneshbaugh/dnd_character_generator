@@ -3,8 +3,14 @@ window.Helpers or= {}
 isNil = (object) ->
   object == null or object == undefined
 
+isEmptyObject = (object) ->
+  for name of object
+    return false
+
+  true
+
 isBlank = (object) ->
-  isNil(object) or (toString.call(object) == "[object string]" and object.trim() == "") or this[property] == []
+  isNil(object) or isEmptyObject(object)  or (toString.call(object) == "[object string]" and object.trim() == "")
 
 verifyAllRequiredOptionsPresent = (options) ->
   requiredOptions = Array.prototype.slice.call(arguments, 1, arguments.length)

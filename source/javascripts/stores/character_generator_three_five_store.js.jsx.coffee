@@ -5,7 +5,7 @@ _character = assign {}, window.Helpers.Validator,
   intelligence: 0
   wisdom: 0
   charisma: 0
-  name: ""
+  race: ""
 
 _character.validateNumericalityOf("strength", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
 _character.validateNumericalityOf("dexterity", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
@@ -13,6 +13,7 @@ _character.validateNumericalityOf("constitution", { onlyInteger: true, greaterTh
 _character.validateNumericalityOf("intelligence", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
 _character.validateNumericalityOf("wisdom", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
 _character.validateNumericalityOf("charisma", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
+_character.validatePresenceOf("race")
 
 window.char = _character
 
@@ -36,6 +37,9 @@ swapStats = (statA, statB) ->
   _character[statA] = _character[statB]
 
   _character[statB] = t
+
+setRace = (race) ->
+  _character.race = race
 
 CharacterGeneratorThreeFiveStore = assign {}, EventEmitter.prototype,
   getCharacter: =>
@@ -68,6 +72,10 @@ CharacterGeneratorAppDispatcher.register (action) ->
       CharacterGeneratorThreeFiveStore.emitCharacterUpdated()
     when "SWAP_STATS"
       swapStats action.statA, action.statB
+
+      CharacterGeneratorThreeFiveStore.emitCharacterUpdated()
+    when "UPDATE_RACE"
+      setRace action.race
 
       CharacterGeneratorThreeFiveStore.emitCharacterUpdated()
 

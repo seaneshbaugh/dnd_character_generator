@@ -45,6 +45,7 @@ CharacterGeneratorThreeFive = React.createClass
           </div>
         </div>
       </div>
+      <CharacterGeneratorThreeFiveCharacterRaces character={this.state.character} />
       {errorReport}
     </div>`
 

@@ -24,4 +24,9 @@ CharacterGeneratorThreeFiveActions =
 
     return
 
+  setRace: (race) ->
+    CharacterGeneratorAppDispatcher.dispatch
+      actionType: "UPDATE_RACE"
+      race: race
+
 window.CharacterGeneratorThreeFiveActions = CharacterGeneratorThreeFiveActions

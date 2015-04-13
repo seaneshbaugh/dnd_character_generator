@@ -15,8 +15,6 @@ _character.validateNumericalityOf("wisdom", { onlyInteger: true, greaterThanOrEq
 _character.validateNumericalityOf("charisma", { onlyInteger: true, greaterThanOrEqualTo: 3, lessThanOrEqualTo: 18 })
 _character.validatePresenceOf("race")
 
-window.char = _character
-
 setStat = (statName, statValue) ->
   if /^([0-9]+)$/.test(statValue)
     _character[statName] = Number(statValue)

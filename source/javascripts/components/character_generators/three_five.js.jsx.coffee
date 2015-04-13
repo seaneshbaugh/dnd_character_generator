@@ -45,7 +45,12 @@ CharacterGeneratorThreeFive = React.createClass
           </div>
         </div>
       </div>
-      <CharacterGeneratorThreeFiveCharacterRaces character={this.state.character} />
+      <div className="row">
+        <CharacterGeneratorThreeFiveCharacterRaces character={this.state.character} />
+        <div className="col-xs-12 col-sm-3">
+          <strong>Race:</strong> {this.state.character.race || ""}
+        </div>
+      </div>
       {errorReport}
     </div>`
 

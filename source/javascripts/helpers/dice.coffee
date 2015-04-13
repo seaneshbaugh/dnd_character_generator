@@ -6,7 +6,7 @@ window.Helpers.Dice =
       throw "roll requires either one, two, or three arguments"
 
     if arguments.length == 1
-      if typeof arguments[0] == "string"
+      if toString.call(arguments[0]) == "[object String]"
         matches = arguments[0].match(/^((([1-9][0-9]*)(d[1-9][0-9]*)(k[1-9][0-9]*))|(([1-9][0-9]*)(d[1-9][0-9]*))|(d[1-9][0-9]*))$/)
 
         throw "roll string argument must match standard dice roll notation" unless matches
@@ -31,14 +31,14 @@ window.Helpers.Dice =
 
             keep = 1
       else
-        if typeof arguments[0] == "number"
+        if toString.call(arguments[0]) == "[object Number]"
           rolls = 1
 
           sides = arguments[0]
 
           keep = 1
         else
-          if typeof arguments[0] == "object" and arguments[0].hasOwnProperty("sides")
+          if arguments[0].hasOwnProperty("sides")
             rolls = arguments[0].rolls or 1
 
             sides = arguments[0].sides

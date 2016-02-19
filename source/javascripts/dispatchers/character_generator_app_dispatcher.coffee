@@ -1,1 +1,0 @@
-window.CharacterGeneratorAppDispatcher = new BaseDispatcher

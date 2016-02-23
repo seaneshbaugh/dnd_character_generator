@@ -1,0 +1,26 @@
+{
+  "name": "dnd_character_generator",
+  "version": "0.0.1",
+  "description": "DnD Character Generator",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015": "^6.5.0",
+    "bower": "^1.7.7",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seaneshbaugh/dnd_character_generator.git"
+  },
+  "author": "Sean Eshbaugh <seaneshbaugh@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seaneshbaugh/dnd_character_generator/issues"
+  },
+  "homepage": "https://github.com/seaneshbaugh/dnd_character_generator#readme"
+}

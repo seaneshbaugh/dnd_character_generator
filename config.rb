@@ -37,3 +37,8 @@ configure :build do
   # Minify Javascript on build
   # activate :minify_javascript
 end
+
+activate :external_pipeline,
+  name: :gulp,
+  command: './node_modules/gulp/bin/gulp.js default',
+  source: 'dist/javascripts'

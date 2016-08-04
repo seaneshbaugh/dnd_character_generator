@@ -1,0 +1,66 @@
+{
+  "root": {
+    "src": "./src",
+    "dest": "./dist"
+  },
+  "tasks": {
+    "browserSync": {
+      "server": {
+        "baseDir": "dist"
+      }
+    },
+    "static": {
+      "src": "static",
+      "dest": "./"
+    },
+    "js": {
+      "src": "javascripts",
+      "dest": "javascripts",
+      "entries": {
+        "app": ["./app.js"]
+      },
+      "extensions": ["js", "json", "jsx"],
+      "babel": {
+        "presets": ["es2015", "react", "stage-1"],
+        "plugins": []
+      },
+      "extractSharedJs": false
+    },
+    "css": {
+      "src": "stylesheets",
+      "dest": "stylesheets",
+      "autoprefixer": {
+        "browsers": ["last 3 version"]
+      },
+      "sass": {
+        "indentedSyntax": false,
+        "includePaths": [
+          "./node_modules/normalize.css"
+        ]
+      },
+      "extensions": ["css", "sass", "scss"]
+    },
+    "html": {
+      "src": "html",
+      "dest": "./",
+      "htmlmin": {
+        "collapseWhitespace": true
+      },
+      "extensions": ["html", "json"],
+      "excludeFolders": []
+    },
+    "images": {
+      "src": "images",
+      "dest": "images",
+      "extensions": ["gif", "jpg", "png", "svg"]
+    },
+    "fonts": {
+      "src": "fonts",
+      "dest": "fonts",
+      "extensions": ["eot", "svg", "ttf", "woff", "woff2"]
+    },
+    "production": {
+      "rev": true
+    }
+  }
+}

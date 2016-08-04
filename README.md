@@ -1,29 +1,27 @@
 # DnD Character Generator
 
+A DnD character generator made with [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org). Currently only 3.5 is supported. The logic for this character generator is based on [Ed Friedlander MD's character generator](http://www.pathguy.com/cg35.htm). The [Gulp](http://gulpjs.com) configuration for this project is based heavily on (read "copied wholesale from") [Gulp Starter](https://github.com/vigetlabs/gulp-starter).
+
 ## Setup
-
-### Install Gem Dependencies
-
-    gem install bundler
-
-    bundle install
 
 ### Install Node
 
+#### OSX
+
     brew install node
 
-### Install Bower
+#### Debian/Ubuntu/Linux Mint
 
-    npm install -g bower
+    sudo apt-get install nodejs
 
-### Install Gulp and Gulp Plugins
+### Install Dependencies
 
     npm install
 
-### Install Bower Packages
+## Running Development Server Locally
 
-    bower install
+    npm start
 
-## Running Locally
+## Building for Production
 
-    middleman server
+    npm run production

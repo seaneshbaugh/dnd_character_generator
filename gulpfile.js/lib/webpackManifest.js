@@ -15,7 +15,7 @@ module.exports = function(publicPath, dest, filename) {
       const manifest = {};
 
       for (const key in chunks) {
-        if ({}.hasOwnProperty.call(chunks, key)) {
+        if (Reflect.apply({}.hasOwnProperty, chunks, [key])) {
           const originalFilename = `${key}.js`;
 
           manifest[path.join(publicPath, originalFilename)] = path.join(publicPath, chunks[key]);

@@ -1,28 +1,37 @@
 /* eslint no-sync: "off" */
+/* eslint prefer-reflect: "off" */
 
 "use strict";
 
 const fs = require("fs");
 const path = require("path");
 
-module.exports = function(publicPath, dest, filename) {
-  const manifestFilename = filename || "rev-manifest.json";
+class ManifestPlugin {
+  constructor(publicPath, dest, filename) {
+    this.publicPath = publicPath;
 
-  return function() {
-    this.plugin("done", (stats) => {
+    this.dest = dest;
+
+    this.manifestFilename = filename || "rev-manifest.json";
+  }
+
+  apply(compiler) {
+    compiler.plugin("done", (stats) => {
       const chunks = stats.toJson().assetsByChunkName;
 
       const manifest = {};
 
       for (const key in chunks) {
-        if (Reflect.apply({}.hasOwnProperty, chunks, [key])) {
+        if ({}.hasOwnProperty.call(chunks, key)) {
           const originalFilename = `${key}.js`;
 
-          manifest[path.join(publicPath, originalFilename)] = path.join(publicPath, chunks[key]);
+          manifest[path.join(this.publicPath, originalFilename)] = path.join(this.publicPath, chunks[key]);
         }
       }
 
-      fs.writeFileSync(path.join(process.cwd(), dest, manifestFilename), JSON.stringify(manifest));
+      fs.writeFileSync(path.join(process.cwd(), this.dest, this.manifestFilename), JSON.stringify(manifest));
     });
-  };
-};
+  }
+}
+
+module.exports = ManifestPlugin;

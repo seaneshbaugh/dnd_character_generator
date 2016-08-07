@@ -13,16 +13,22 @@ const webpackManifest = require("./webpackManifest");
 
 module.exports = function(env) {
   const jsSrc = path.resolve(config.root.src, config.tasks.js.src);
+
   const jsDest = path.resolve(config.root.dest, config.tasks.js.dest);
+
   const publicPath = pathToUrl(config.tasks.js.dest, "/");
 
-  const extensions = config.tasks.js.extensions.map((extension) => {
-    return `.${extension}`;
-  });
+  const extensions = config.tasks.js.extensions.map((extension) => `.${extension}`);
 
   const rev = config.tasks.production.rev && env === "production";
 
-  const filenamePattern = rev ? "[name]-[hash].js" : "[name].js";
+  const filenamePattern = (() => {
+    if (rev) {
+      return "[name]-[hash].js";
+    }
+
+    return "[name].js";
+  })();
 
   const webpackConfig = {
     "context": jsSrc,
@@ -48,9 +54,11 @@ module.exports = function(env) {
 
     // Create new entries object with webpack-hot-middleware added
     for (const key in config.tasks.js.entries) {
-      const entry = config.tasks.js.entries[key];
+      if (Reflect.apply({}.hasOwnProperty, config.tasks.js.entries, [key])) {
+        const entry = config.tasks.js.entries[key];
 
-      config.tasks.js.entries[key] = ["webpack-hot-middleware/client?&reload=true"].concat(entry);
+        config.tasks.js.entries[key] = ["webpack-hot-middleware/client?&reload=true"].concat(entry);
+      }
     }
 
     webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());

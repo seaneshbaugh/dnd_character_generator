@@ -1,23 +1,23 @@
 "use strict";
 
-var config = require("../config");
+const config = require("../config");
 
 if (!config.tasks.js) {
   return;
 }
 
-var config = require("../lib/webpack-multi-config")("production");
-var gulp = require("gulp");
-var logger = require("../lib/compileLogger");
-var webpack = require("webpack");
+const gulp = require("gulp");
+const webpack = require("webpack");
+const logger = require("../lib/compileLogger");
+const webpackConfig = require("../lib/webpack-multi-config")("production");
 
-var webpackProductionTask = function(callback) {
-  webpack(config, function(err, stats) {
-    logger(err, stats);
+const webpackProductionTask = function(callback) {
+  webpack(webpackConfig, (error, stats) => {
+    logger(error, stats);
 
     callback();
   });
-}
+};
 
 gulp.task("webpack:production", webpackProductionTask);
 

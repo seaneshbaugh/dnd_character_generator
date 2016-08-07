@@ -1,5 +1,4 @@
 /* eslint no-sync: "off" */
-/* eslint prefer-reflect: "off" */
 
 "use strict";
 
@@ -22,7 +21,7 @@ class ManifestPlugin {
       const manifest = {};
 
       for (const key in chunks) {
-        if ({}.hasOwnProperty.call(chunks, key)) {
+        if (Reflect.apply({}.hasOwnProperty, chunks, [key])) {
           const originalFilename = `${key}.js`;
 
           manifest[path.join(this.publicPath, originalFilename)] = path.join(this.publicPath, chunks[key]);

@@ -1,10 +1,10 @@
 "use strict";
 
-const config = require("../../config");
 const gulp = require("gulp");
 const path = require("path");
 const rev = require("gulp-rev");
 const revNapkin = require("gulp-rev-napkin");
+const config = require("../../config");
 
 // 1) Add md5 hashes to assets referenced by CSS and JS files
 gulp.task("rev-assets", () => {

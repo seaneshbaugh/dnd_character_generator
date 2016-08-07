@@ -18,7 +18,7 @@ const productionTask = function(callback) {
     return false;
   })();
 
-  gulpSequence("clean", tasks.assetTasks, tasks.codeTasks, rev, "size-report", "static", callback);
+  gulpSequence("clean", tasks.assetTasks, tasks.codeTasks, rev, "static", callback);
 };
 
 gulp.task("production", productionTask);

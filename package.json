@@ -29,7 +29,8 @@
     "foundation-sites": "^6.2.3",
     "normalize.css": "^4.2.0",
     "react": "^15.2.1",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",

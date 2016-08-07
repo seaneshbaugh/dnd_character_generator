@@ -3,6 +3,7 @@
 const React = require("react");
 const ReactDOM = require("react-dom");
 const Redux = require("redux");
+const thunk = require("redux-thunk").default;
 const HelloWorld = require("./components/hello_world");
 const GreetingReducer = require("./reducers/greeting_reducer");
 
@@ -22,7 +23,7 @@ onReady(function() {
       "name": ""
     };
 
-    window.greetingStore = Redux.createStore(GreetingReducer, state);
+    window.greetingStore = Redux.createStore(GreetingReducer, state, Redux.applyMiddleware(thunk));
 
     ReactDOM.render(<HelloWorld test="rofl" lol={123} store={window.greetingStore} />, node);
   }

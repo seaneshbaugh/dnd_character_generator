@@ -1,14 +1,26 @@
-var config       = require('../config')
-var gulp         = require('gulp')
-var gulpSequence = require('gulp-sequence')
-var getEnabledTasks = require('../lib/getEnabledTasks')
+"use strict";
 
-var productionTask = function(cb) {
-  global.production = true
-  var tasks = getEnabledTasks('production')
-  gulpSequence('clean', tasks.assetTasks, tasks.codeTasks, config.tasks.production.rev ? 'rev': false, // 'size-report',
-                'static', cb)
-}
+const gulp = require("gulp");
+const gulpSequence = require("gulp-sequence");
+const config = require("../config");
+const getEnabledTasks = require("../lib/getEnabledTasks");
 
-gulp.task('production', productionTask)
-module.exports = productionTask
+const productionTask = function(callback) {
+  global.production = true;
+
+  const tasks = getEnabledTasks("production");
+
+  const rev = (() => {
+    if (config.tasks.production.rev) {
+      return "rev";
+    }
+
+    return false;
+  })();
+
+  gulpSequence("clean", tasks.assetTasks, tasks.codeTasks, rev, "size-report", "static", callback);
+};
+
+gulp.task("production", productionTask);
+
+module.exports = productionTask;

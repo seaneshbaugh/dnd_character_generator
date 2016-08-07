@@ -1,26 +1,29 @@
-var config  = require('../config')
-//var ghPages = require('gulp-gh-pages')
-var gulp    = require('gulp')
-//var open    = require('open')
-var os      = require('os')
-var package = require('../../package.json')
-var path    = require('path')
+"use strict";
 
-var settings = {
-  url: package.homepage,
-  src: path.join(config.root.dest, '/**/*'),
-  ghPages: {
-    cacheDir: path.join(os.tmpdir(), package.name)
+// const ghPages = require("gulp-gh-pages");
+const gulp = require("gulp");
+// const open = require("open");
+const os = require("os");
+const path = require("path");
+const config = require("../config");
+const npmPackage = require("../../package.json");
+
+const settings = {
+  "url": npmPackage.homepage,
+  "src": path.join(config.root.dest, "/**/*"),
+  "ghPages": {
+    "cacheDir": path.join(os.tmpdir(), npmPackage.name)
   }
-}
+};
 
-var deployTask = function() {
-  return gulp.src(settings.src)
-//    .pipe(ghPages(settings.ghPages))
-    .on('end', function(){
- //     open(settings.url)
-    })
-}
+const deployTask = function() {
+  return gulp.src(settings.src).
+    // pipe(ghPages(settings.ghPages)).
+    on("end", () => {
+      // open(settings.url);
+    });
+};
 
-gulp.task('deploy', ['production'], deployTask)
-module.exports = deployTask
+gulp.task("deploy", ["production"], deployTask);
+
+module.exports = deployTask;

@@ -5,6 +5,7 @@ const ReactDOM = require("react-dom");
 const Redux = require("redux");
 const thunk = require("redux-thunk").default;
 const HelloWorld = require("./components/hello_world");
+const CharacterGenerator = require("./components/character_generator");
 const GreetingReducer = require("./reducers/greeting_reducer");
 
 const onReady = function(completed) {
@@ -25,6 +26,6 @@ onReady(function() {
 
     window.greetingStore = Redux.createStore(GreetingReducer, state, Redux.applyMiddleware(thunk));
 
-    ReactDOM.render(<HelloWorld test="rofl" lol={123} store={window.greetingStore} />, node);
+    ReactDOM.render(<CharacterGenerator store={window.greetingStore} />, node);
   }
 });
